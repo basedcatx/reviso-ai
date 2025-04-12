@@ -5,12 +5,10 @@ import { BlueCard } from "@/components/BlueCard";
 import { testimonials } from "@/constants";
 import TestimonialCard from "@/components/TestimonialCard";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const Footer = () => {
   const itemRefs = useRef([]);
+  const observer = useRef<IntersectionObserver>(null);
 
   const addItemRefs = (ref: HTMLElement) => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -22,35 +20,47 @@ const Footer = () => {
     }
   };
 
+  const tl = gsap.timeline({ x: "100%" });
+
   useEffect(() => {
     const items = itemRefs.current;
 
-    items.map((item) => {
-      console.log(item);
-      gsap.fromTo(
-        item,
-        {
-          x: "100%",
-          opacity: 0,
-        },
-        {
-          x: 0,
-          opacity: 1,
-          ease: "sine.in",
-          duration: 1,
-          scrollTrigger: {
-            trigger: item,
-            start: "top 80%",
-            end: "center 80%",
-            scrub: true,
-          },
-        },
-      );
+    observer.current = new IntersectionObserver(
+      (entries) => {
+        entries.map((entry) => {
+          if (entry.isIntersecting) {
+            const item = entry.target;
+            tl.fromTo(
+              item,
+              {
+                x: "100%",
+                opacity: 0,
+              },
+              {
+                x: "0%",
+                opacity: 1,
+                ease: "bounce.out",
+                duration: 1,
+              },
+            );
+            // Disconnect observer after animation starts
+            observer?.current?.unobserve(item);
+          }
+        });
+      },
+      { threshold: 0.1 },
+    );
+
+    items.forEach((item) => {
+      observer?.current?.observe(item); // Observe each item
     });
 
     return () => {
       // Cleanup ScrollTriggers to prevent memory leaks
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      if (observer.current) {
+        observer.current.disconnect(); // Disconnect observer on unmount
+      }
+      tl.kill();
     };
   }, []);
   return (
