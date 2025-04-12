@@ -7,6 +7,13 @@ export const Hero = () => {
   return (
     <section className={"flex flex-row max-lg:flex-col"}>
       <div className="flex flex-col gap-4">
+        <Image
+          src={"/bulb.svg"}
+          alt={"bulb"}
+          width={100}
+          height={100}
+          unoptimized
+        />
         <h1
           className={
             "font-black lg:text-6xl text-4xl leading-tight font-montserrat"
