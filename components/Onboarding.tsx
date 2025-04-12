@@ -33,7 +33,7 @@ export const Onboarding = () => {
               x: "0",
               opacity: 1,
               ease: "power2.inOut",
-              duration: 0.5,
+              duration: 0.7,
             });
 
             observer?.current?.unobserve(item);
