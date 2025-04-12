@@ -38,7 +38,7 @@ export const testimonials = [
   {
     name: "Senju Brandon, Computer Science, UB",
     testimonial:
-      "This app really helped me grasp my study materials by making so interactive, Quizzes were so spots on",
+      "This app really helped me grasp my study materials by making soo interactive, Quizzes were so spots on",
     sex: "m",
   },
   {
