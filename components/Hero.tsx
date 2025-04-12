@@ -1,13 +1,35 @@
-import React from "react";
+"use client";
+import React, { useEffect, useRef } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import gsap from "gsap";
 
 export const Hero = () => {
+  const imageRef = useRef<HTMLImageElement | null>(null);
+  const tl = gsap.timeline({ repeat: -1, yoyo: true });
+  useEffect(() => {
+    tl.fromTo(
+      imageRef.current,
+      {
+        scaleX: 1,
+        scaleY: 1,
+      },
+      {
+        fill: "#ffed09",
+        duration: 1,
+        ease: "power2.inOut",
+        delay: 2,
+        scaleX: 0.5,
+        scaleY: 0.5,
+      },
+    );
+  }, []);
   return (
     <section className={"flex flex-row max-lg:flex-col"}>
       <div className="flex flex-col gap-4">
         <Image
+          ref={imageRef}
           src={"/bulb.svg"}
           alt={"bulb"}
           width={100}

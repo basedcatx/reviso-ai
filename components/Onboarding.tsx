@@ -29,12 +29,20 @@ export const Onboarding = () => {
           if (entry.isIntersecting) {
             const item = entry.target;
 
-            tl.to(item, {
-              x: "0",
-              opacity: 1,
-              ease: "power2.inOut",
-              duration: 0.7,
-            });
+            tl.fromTo(
+              item,
+              {
+                x: "100%",
+                opacity: 0,
+                duration: 0,
+              },
+              {
+                x: "0",
+                opacity: 1,
+                ease: "power2.inOut",
+                duration: 0.7,
+              },
+            );
 
             observer?.current?.unobserve(item);
           }
@@ -47,11 +55,6 @@ export const Onboarding = () => {
 
     items.forEach((item) => {
       if (item) {
-        tl.set(item, {
-          x: "100%",
-          opacity: 0,
-        });
-
         observer?.current?.observe(item); // Observe each item
       }
     });
