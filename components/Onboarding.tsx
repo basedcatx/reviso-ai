@@ -32,7 +32,7 @@ export const Onboarding = () => {
             tl.fromTo(
               item,
               {
-                translateX: "100%",
+                translateX: "10%",
                 opacity: 0,
                 duration: 0,
               },
