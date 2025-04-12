@@ -3,9 +3,10 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
 
-export const BlueCard = () => {
+export const BlueCard = ({ ref }: { ref?: (ref: HTMLDivElement) => void }) => {
   return (
     <div
+      ref={ref}
       className={
         "bg-blue-200 flex flex-col rounded-lg items-center gap-4 p-8 row-span-2"
       }

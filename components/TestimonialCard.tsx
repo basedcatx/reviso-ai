@@ -5,9 +5,16 @@ const TestimonialCard = ({
   name,
   sex,
   testimonial,
-}: Record<string, string>) => {
+  ref,
+}: {
+  name: string;
+  testimonial: string;
+  ref: (ref: HTMLDivElement) => void;
+  sex: string;
+}) => {
   return (
     <div
+      ref={ref}
       className={
         "bg-blue-50 p-6 flex flex-row gap-4 row-span-2 rounded-lg my-4 items-center"
       }

@@ -7,13 +7,16 @@ const ImageCard = ({
   icon,
   title,
   desc,
+  ref,
 }: {
   icon: string;
   title: string;
   desc: string;
+  ref: (ref: HTMLDivElement) => void;
 }) => {
   return (
     <div
+      ref={ref}
       onFocus={() => console.log("inFocus")}
       className={
         "rounded-md bg-blue-50 border flex justify-center items-center p-6 gap-4 flex-col shadow-sm"
