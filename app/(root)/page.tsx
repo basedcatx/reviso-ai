@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 
 const Page = () => {
   return (
-    <main className={"min-h-screen w-full p-2 max-w-screen"}>
+    <main className={"min-h-screen w-full p-2 max-w-screen mx-auto"}>
       <Hero />
       <Onboarding />
       <Footer />
