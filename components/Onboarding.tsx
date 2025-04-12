@@ -32,15 +32,15 @@ export const Onboarding = () => {
             tl.fromTo(
               item,
               {
-                x: "100%",
+                translateX: "100%",
                 opacity: 0,
                 duration: 0,
               },
               {
-                x: "0",
+                translateX: 0,
                 opacity: 1,
                 ease: "power2.inOut",
-                duration: 0.7,
+                duration: 0.6,
               },
             );
 
@@ -49,7 +49,7 @@ export const Onboarding = () => {
         });
       },
       {
-        threshold: 0.3,
+        threshold: 0.02,
       },
     );
 
@@ -67,7 +67,7 @@ export const Onboarding = () => {
     };
   }, []);
   return (
-    <section className={"mt-14 mx-4"}>
+    <section className={"mt-14 mx-4 overflow-hidden max-w-screen"}>
       <h1 className={"header-text"}>How it works in 3 easy steps</h1>
 
       <div className={"grid lg:grid-cols-3 grid-cols-1 gap-8 flx"}>
@@ -80,7 +80,7 @@ export const Onboarding = () => {
         Powerful Features to Enhance Your Learning
       </h1>
 
-      <div className={"grid lg:grid-cols-3 grid-cols-1 gap-8 flx"}>
+      <div className={"grid lg:grid-cols-3 grid-cols-1 gap-8"}>
         {features.map((item) => (
           <ImageCard key={item.title} {...item} {...item} ref={addItemRefs} />
         ))}

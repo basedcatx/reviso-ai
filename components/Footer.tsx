@@ -33,11 +33,11 @@ const Footer = () => {
             tl.fromTo(
               item,
               {
-                x: "100%",
+                translateX: "100%",
                 opacity: 0,
               },
               {
-                x: "0%",
+                translateX: "0%",
                 opacity: 1,
                 ease: "bounce.out",
                 duration: 1,
@@ -66,7 +66,7 @@ const Footer = () => {
   return (
     <footer
       className={
-        "grid grid-cols-1 lg:grid-cols-2 mt-14 rounded-md gap-8 mx-4 mb-10"
+        "grid grid-cols-1 lg:grid-cols-2 mt-14 rounded-md gap-8 mx-4 mb-10 absolute"
       }
     >
       <div>

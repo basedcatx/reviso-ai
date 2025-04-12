@@ -19,7 +19,7 @@ const ImageCard = ({
       ref={ref}
       onFocus={() => console.log("inFocus")}
       className={
-        "rounded-md bg-blue-50 border flex justify-center items-center p-6 gap-4 flex-col shadow-sm"
+        "rounded-md bg-blue-50 border flex justify-center items-center p-6 gap-4 flex-col shadow-sm max-w-screen"
       }
     >
       <Image src={icon} alt={"image"} width={100} height={200} unoptimized />
